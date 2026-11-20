@@ -46,8 +46,11 @@ const text = computed(() =>
           v-else-if="p.doc.grid"
           data-testid="text-preview"
           :style="{
-            fontSize: (14 * p.zoom.value) / 100 + 'px',
-            lineHeight: (16 * p.zoom.value) / 100 + 'px',
+            fontFamily: p.doc.grid.monospace
+              ? `'${p.doc.grid.fontFamily}', monospace`
+              : 'monospace',
+            fontSize: (p.doc.grid.fontSize * p.zoom.value) / 100 + 'px',
+            lineHeight: (p.doc.grid.cellHeight * p.zoom.value) / 100 + 'px',
           }"
           >{{ text }}</pre>
         <span v-else>正在准备字符画…</span>

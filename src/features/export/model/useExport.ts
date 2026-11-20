@@ -27,7 +27,7 @@ export function useExport() {
   function png() {
     if (!ready()) return;
     const c = document.createElement("canvas");
-    drawGrid(c, doc.grid!, doc.settings.color, doc.settings.background);
+    drawGrid(c, doc.grid!, doc.settings.color, doc.settings.background, 2);
     c.toBlob((b) => {
       if (b) download(b, exportName(doc.asset?.name ?? "art", "png"));
     }, "image/png");

@@ -1,12 +1,17 @@
 <script setup lang="ts">
+import { onMounted } from "vue";
 import { Asterisk, LockKeyhole, ArrowUpRight } from "lucide-vue-next";
 import { useWorkspace } from "./useWorkspace";
 import { SourcePanel } from "../features/source";
 import { CropPanel } from "../features/crop";
 import { MappingPanel } from "../features/mapping";
+import { CalibrationPanel } from "../features/calibration";
 import { PreviewPanel } from "../features/preview";
 import { ExportPanel } from "../features/export";
 const w = useWorkspace();
+onMounted(() => {
+  void w.calibration.loadBundled();
+});
 </script>
 <template>
   <div class="app">
@@ -36,6 +41,7 @@ const w = useWorkspace();
       <aside><SourcePanel /><CropPanel /><MappingPanel /></aside>
       <div class="result"><PreviewPanel /><ExportPanel /></div>
     </div>
+    <CalibrationPanel />
     <footer>
       <span role="status">{{ w.notice.value }}</span
       ><span>CRAFTED IN CHARACTERS <b>✳</b></span>

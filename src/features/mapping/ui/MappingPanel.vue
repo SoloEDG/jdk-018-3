@@ -7,7 +7,7 @@ const { doc, invalidate } = useStudio();
 <template>
   <section class="panel">
     <div class="section-title">
-      <span>03 / CHARACTER LAB</span><SlidersHorizontal :size="15" />
+      <span>04 / TONE ENGINE</span><SlidersHorizontal :size="15" />
     </div>
     <label class="field"
       >字符密度 <b>{{ doc.settings.columns }} 列</b

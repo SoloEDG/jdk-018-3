@@ -11,18 +11,21 @@ const props = defineProps<{
 const canvas = ref<HTMLCanvasElement>();
 function draw() {
   if (canvas.value)
-    drawGrid(canvas.value, props.grid, props.color, props.background);
+    drawGrid(canvas.value, props.grid, props.color, props.background, 2);
 }
 onMounted(draw);
-watch(() => [props.grid, props.color, props.background], draw);
+watch(
+  () => [props.grid, props.color, props.background],
+  draw,
+);
 </script>
 <template>
   <canvas
     ref="canvas"
     aria-label="字符画预览"
     :style="{
-      width: (grid.columns * 8 * zoom) / 100 + 'px',
-      height: (grid.rows * 16 * zoom) / 100 + 'px',
+      width: (grid.columns * grid.cellWidth * zoom) / 100 + 'px',
+      height: (grid.rows * grid.cellHeight * zoom) / 100 + 'px',
     }"
   />
 </template>
